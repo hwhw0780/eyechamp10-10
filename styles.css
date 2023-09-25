@@ -106,14 +106,14 @@ body {
     right: 10px;
 }
 
-#whatsapp-us-button,
+#whatsapp-button,
 #contact-lens-button {
     margin-right: 10px;
     padding: 10px;
     cursor: pointer;
 }
 
-#whatsapp-us-button,
+#whatsapp-button,
 #contact-lens-button {
     background-color: yellow;
 }
