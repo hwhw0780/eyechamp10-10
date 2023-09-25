@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Card Event</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<!-- Disclaimer Header -->
+<header style="position: absolute; top: 10px; left: 10px; font-size: smaller; text-align: left;">
+    Flip Card Challange is powered by EyeChamp<br>
+    EyeChamp reserves the right to amend the T&C without notice.
+</header>
+
+<h1 class="site-title"><br><br>Flip Card Challange</h1>
+
+<div id="buttons-container">
+        <button id="optical-frames-button" onclick="window.location.href='https://hwhw0780.github.io/'">Optical Frames</button>
+        <button id="contact-lens-button" onclick="window.location.href='https://hwhw0780.github.io/flipcardCL/'">Contact Lens</button>
+</div>
+
+<div class="input-container">
+    <input type="tel" id="phoneNumber" maxlength="8" pattern="^[0-9]{8}$" title="Please enter an 8-digit phone number." placeholder="Enter your phone number" required>
+    <button onclick="startGame()">Play</button>
+</div>
+
+    <div class="cards-wrapper">
+    <div class="card-container" id="card1" onclick="revealDiscount('card1')">
+        <div class="card">
+            <div class="card-front">
+                <img src="test card1.png" alt="Card Front">
+            </div>
+            <div class="card-back">
+                <div class="card-back-content"></div>
+            </div>
+        </div>
+    </div>
+    <div class="card-container" id="card2" onclick="revealDiscount('card2')">
+        <div class="card">
+            <div class="card-front">
+                <img src="test card2.png" alt="Card Front">
+            </div>
+            <div class="card-back">
+                <div class="card-back-content"></div>
+            </div>
+        </div>
+    </div>
+    <div class="card-container" id="card3" onclick="revealDiscount('card3')">
+        <div class="card">
+            <div class="card-front">
+                <img src="test card3.png" alt="Card Front">
+            </div>
+            <div class="card-back">
+                <div class="card-back-content"></div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+<p style="text-align:center; margin-top: 20px; font-size: 0.9em;">Each number can only join the flip card challenge once. Please fill in your number correctly.</p>
+    <div id="prizePoolDetails" class="prize-pool-style">
+    <strong><u>Prize Pool:</u></strong>
+    <div class="discount-detail"><br></div>
+    <div class="discount-detail">1st prize: 50% Off (Min Spend $400) - 10 pieces</div>
+    <div class="discount-detail">2nd prize: 30% Off (Min Spend $300) - 40 pieces</div>
+    <div class="discount-detail">3th prize: 20% Off (Min Spend $200) - 50 pieces</div>
+    <div class="discount-detail">Special prize: $10 Off (Min Spend $200) - 200 pieces</div>
+    <div class="discount-detail">Consolidation prize: $7 Off (Min Spend $200) - 300 pieces</div>
+</div>
+</div>
+
+<!-- How to Redeem Voucher -->
+<div id="redeemText" style="display: none; font-size: larger; text-align: center; margin-top: 20px;">How to Redeem the voucher?</div>
+
+
+<!-- Steps to Redeem Voucher -->
+<div id="redeemSteps" style="display: none; text-align: center; margin-top: 20px;">
+    <img src="1.png" alt="Step 1" style="width: 300px; height: 300px; margin-right: 10px;">
+    <img src="2.png" alt="Step 2" style="width: 300px; height: 300px; margin-right: 10px;">
+    <img src="3.png" alt="Step 3" style="width: 300px; height: 300px; margin-right: 10px;">
+    <img src="4.png" alt="Step 4" style="width: 300px; height: 300px;">
+</div>
+
+
+</body>
+</html>
