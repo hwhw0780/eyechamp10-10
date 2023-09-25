@@ -91,6 +91,15 @@ body {
     font-size: larger; /* Adjust this value as needed */
 }
 
+.card-back .discountMessage {
+    color: rgb(255, 255, 0) !important;
+    font-size: 1.5em;  /* Adjust this value as desired */
+}
+
+.card-back .discountMessage1 {
+    color: rgb(255, 255, 0) !important;
+}
+
 #buttons-container {
     position: absolute;
     top: 10px;
