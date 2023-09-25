@@ -40,7 +40,7 @@ function revealDiscount(cardId) {
     currentDate.setDate(currentDate.getDate() + 14);
     const expiryDateText = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
 
-    card.querySelector('.card-back-content').innerHTML = `<div>You won</div><div>${discount}</div><div>Discount Code: ${code}</div><div>Phone number: ${phoneNumber.value}</div><div style="color: red;">Expiry Date: ${expiryDateText}</div><br><div>Screenshot this to redeem the voucher! :)</div>`;
+    card.querySelector('.card-back-content').innerHTML = `<div class="discountMessage">${discount}</div><div class="discountMessage1">*capped discount at $275*</div><div><br></div><div>Discount Code: ${code}</div><div>Phone number: ${phoneNumber.value}</div><div>Expiry Date: ${expiryDateText}</div><br><div>Screenshot this to redeem the voucher! :)</div>`;
     
     
     // Disable further interactions for all cards
@@ -55,11 +55,11 @@ function getRandomDiscount() {
     let discounts = [];
 
     if (randomNum < 0.60) { // 60% chance
-        discounts.push("20% Off (Min Spend $200)");
+        discounts.push("SGD10 (Min Spend $200)");
     } else if (randomNum < 0.95) { // 35% chance
-        discounts.push("30% Off (Min Spend $300)");
+        discounts.push("SGD20 (Min Spend $200)");
     } else { // 5% chance
-        discounts.push("50% Off (Min Spend $400)");
+        discounts.push("SGD40 (Min Spend $200)");
     }
     const randomIndex = Math.floor(Math.random() * discounts.length);
     return discounts[randomIndex];
@@ -68,7 +68,7 @@ function getRandomDiscount() {
 // Function to generate a random discount code
 function getRandomCode() {
     const randomNum = Math.floor(Math.random() * 100000);
-    return `EYEC${String(randomNum).padStart(5, '0')}`;  // Pads with zeros to ensure 5 digits
+    return `CLEYE${String(randomNum).padStart(5, '0')}`;  // Pads with zeros to ensure 5 digits
 }
 
 function getCookie(name) {
