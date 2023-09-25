@@ -1,14 +1,16 @@
 function startGame() {
     const phoneNumber = document.getElementById('phoneNumber').value;
-    document.getElementById("prizePoolDetails").style.display = "none";
+    
+    // Retrieve the play count from the cookie
+    let playCount = parseInt(getCookie(phoneNumber)) || 0;
 
-    // Check if the user with this phone number has played before
-    if (getCookie(phoneNumber)) {
-        alert('You have already played!');
-        
+    // Check if the user with this phone number has played twice
+    if (playCount >= 2) {
+        alert('You have already played twice!');
     } else {
-        // Set a cookie for this user
-        setCookie(phoneNumber, 'played', 30); // The number '30' signifies the cookie will expire in 30 days
+        // Increment the play count and set the updated value in the cookie
+        playCount++;
+        setCookie(phoneNumber, playCount.toString(), 30);
 
         // Make the cards visible
         const cards = document.querySelectorAll('.card-container');
