@@ -55,11 +55,11 @@ function getRandomDiscount() {
     let discounts = [];
 
     if (randomNum < 0.60) { // 60% chance
-        discounts.push("SGD10 (Min Spend $200)");
+        discounts.push("25% Off (Min Spend $100)");
     } else if (randomNum < 0.95) { // 35% chance
-        discounts.push("SGD20 (Min Spend $200)");
+        discounts.push("30% Off (Min Spend $100)");
     } else { // 5% chance
-        discounts.push("SGD40 (Min Spend $200)");
+        discounts.push("40% Off (Min Spend $100)");
     }
     const randomIndex = Math.floor(Math.random() * discounts.length);
     return discounts[randomIndex];
@@ -68,7 +68,7 @@ function getRandomDiscount() {
 // Function to generate a random discount code
 function getRandomCode() {
     const randomNum = Math.floor(Math.random() * 100000);
-    return `CLEYE${String(randomNum).padStart(5, '0')}`;  // Pads with zeros to ensure 5 digits
+    return `FLEYE${String(randomNum).padStart(5, '0')}`;  // Pads with zeros to ensure 5 digits
 }
 
 function getCookie(name) {
