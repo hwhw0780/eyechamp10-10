@@ -1,5 +1,6 @@
 function startGame() {
     const phoneNumber = document.getElementById('phoneNumber').value;
+    document.getElementById("prizePoolDetails").style.display = "none";
     
     // Retrieve the play count from the cookie
     let playCount = parseInt(getCookie(phoneNumber)) || 0;
