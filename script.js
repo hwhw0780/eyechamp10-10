@@ -25,20 +25,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    let selectedGame = null;
+    let selectedKeyCount = null;
+
     const startBtn = document.getElementById('startBtn');
-    const keyCountSelect = document.getElementById('keyCountSelect');
-    const keyCountLabel = document.getElementById('keyCountLabel');
     const progressContainer = document.getElementById('progressContainer');
-    const progressBar = document.getElementById('progressBar');
-    const progressText = document.getElementById('progressText');
     const progressLog = document.getElementById('progressLog');
+    const progressBar = document.getElementById('progressBar');
     const keyContainer = document.getElementById('keyContainer');
     const keysList = document.getElementById('keysList');
     const copyAllBtn = document.getElementById('copyAllBtn');
-    const generatedKeysTitle = document.getElementById('generatedKeysTitle');
-    const gameSelect = document.getElementById('gameSelect');
     const copyStatus = document.getElementById('copyStatus');
-    const telegramChannelBtn = document.getElementById('telegramChannelBtn');
+
+    document.querySelectorAll('.game-button').forEach(button => {
+        button.addEventListener('click', () => {
+            selectedGame = button.getAttribute('data-game');
+            document.querySelectorAll('.game-button').forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+        });
+    });
+
+    document.querySelectorAll('.key-button').forEach(button => {
+        button.addEventListener('click', () => {
+            selectedKeyCount = button.getAttribute('data-keys');
+            document.querySelectorAll('.key-button').forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+        });
+    });
 
     const initializeLocalStorage = () => {
         const now = new Date().toISOString().split('T')[0];
@@ -134,9 +147,13 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeLocalStorage();
 
     startBtn.addEventListener('click', async () => {
-        const gameChoice = parseInt(gameSelect.value);
-        const keyCount = parseInt(keyCountSelect.value);
-        const game = games[gameChoice];
+        if (!selectedGame || !selectedKeyCount) {
+            alert('Please select a game and the number of keys.');
+            return;
+        }
+
+        const game = games[selectedGame];
+        const keyCount = parseInt(selectedKeyCount);
 
         const storageKey = `keys_generated_${game.name}`;
         const storedData = JSON.parse(localStorage.getItem(storageKey));
@@ -146,17 +163,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        keyCountLabel.innerText = `Number of keys: ${keyCount}`;
-
-        progressBar.style.width = '0%';
-        progressText.innerText = '0%';
-        progressLog.innerText = 'Starting...';
+        progressLog.innerText = 'Starting... estimate 60 seconds';
         progressContainer.classList.remove('hidden');
         keyContainer.classList.add('hidden');
-        generatedKeysTitle.classList.add('hidden');
         keysList.innerHTML = '';
-        keyCountSelect.classList.add('hidden');
-        gameSelect.classList.add('hidden');
         startBtn.classList.add('hidden');
         copyAllBtn.classList.add('hidden');
         startBtn.disabled = true;
@@ -165,7 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const updateProgress = (increment, message) => {
             progress += increment;
             progressBar.style.width = `${progress}%`;
-            progressText.innerText = `${progress}%`;
             progressLog.innerText = message;
         };
 
@@ -183,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
             for (let i = 0; i < 11; i++) {
                 await sleep(EVENTS_DELAY * delayRandom());
                 const hasCode = await emulateProgress(clientToken, game.promoId);
-                updateProgress(7 / keyCount, 'Emulating progress...');
+                updateProgress(9, 'Emulating progress...');
                 if (hasCode) {
                     break;
                 }
@@ -191,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 const key = await generateKey(clientToken, game.promoId);
-                updateProgress(30 / keyCount, 'Generating key...');
+                updateProgress(30, 'Generating key...');
                 return key;
             } catch (error) {
                 alert(`Failed to generate key: ${error.message}`);
@@ -221,7 +230,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem(storageKey, JSON.stringify(storedData));
 
         keyContainer.classList.remove('hidden');
-        generatedKeysTitle.classList.remove('hidden');
         document.querySelectorAll('.copyKeyBtn').forEach(button => {
             button.addEventListener('click', (event) => {
                 const key = event.target.getAttribute('data-key');
@@ -239,34 +247,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        progressBar.style.width = '100%';
-        progressText.innerText = '100%';
         progressLog.innerText = 'Complete';
-
+        progressBar.style.width = '100%';
         startBtn.classList.remove('hidden');
-        keyCountSelect.classList.remove('hidden');
-        gameSelect.classList.remove('hidden');
         startBtn.disabled = false;
     });
-
-    document.getElementById('generateMoreBtn').addEventListener('click', () => {
-        progressContainer.classList.add('hidden');
-        keyContainer.classList.add('hidden');
-        startBtn.classList.remove('hidden');
-        keyCountSelect.classList.remove('hidden');
-        gameSelect.classList.remove('hidden');
-        generatedKeysTitle.classList.add('hidden');
-        copyAllBtn.classList.add('hidden');
-        keysList.innerHTML = '';
-        keyCountLabel.innerText = 'Number of keys:';
-    });
-
-    document.getElementById('creatorChannelBtn').addEventListener('click', () => {
-        window.open('https://telegram.me/Insta_Buy_Follower', '_blank');
-    });
-
-    telegramChannelBtn.addEventListener('click', () => {
-        window.open('https://telegram.me/Sam_Dm_bot', '_blank');
-    });
 });
+
 
