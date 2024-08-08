@@ -3,87 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flip Card Event</title>
+    <title>Game Promo Code Generator</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
-
-<!-- Disclaimer Header -->
-<header style="position: absolute; top: 10px; left: 10px; font-size: smaller; text-align: left;">
-    Flip Card Challange is powered by EyeChamp<br>
-    EyeChamp reserves the right to amend the T&C without notice.
-</header>
-
-<h1 class="site-title"><br><br>Flip Card Challange | Optical Frames</h1>
-
-<div id="buttons-container">
-       <button id="contact-lens-button" onclick="window.location.href='https://hwhw0780.github.io/flipcardCL/'">Contact Lens Challenge</button>
-       <button id="whatsapp-button" onclick="window.location.href='https://wa.link/qbuwb4'">Whatsapp Us</button>
-</div>
-    
-<div class="input-container">
-    <input type="tel" id="phoneNumber" maxlength="8" pattern="^[0-9]{8}$" title="Please enter an 8-digit phone number." placeholder="Enter your phone number" required>
-    <button onclick="startGame()">Play</button>
-</div>
-
-    <div class="cards-wrapper">
-    <div class="card-container" id="card1" onclick="revealDiscount('card1')">
-        <div class="card">
-            <div class="card-front">
-                <img src="test card1.png" alt="Card Front">
+    <div class="container">
+        <h1>Game Promo Code Generator</h1>
+        <div class="form-group">
+            <label for="gameSelect">Select Game</label>
+            <select id="gameSelect">
+                <option value="1">Riding Extreme 3D</option>
+                <option value="2">Chain Cube 2048</option>
+                <option value="3">My Clone Army</option>
+                <option value="4">Train Miner</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label id="keyCountLabel" for="keyCountSelect">Number of keys:</label>
+            <select id="keyCountSelect">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <button id="startBtn">Generate Keys</button>
+        <div id="progressContainer" class="hidden">
+            <div class="progress-bar">
+                <div id="progressBar"></div>
             </div>
-            <div class="card-back">
-                <div class="card-back-content"></div>
-            </div>
+            <div id="progressText">0%</div>
+            <div id="progressLog">Starting...</div>
+        </div>
+        <div id="keyContainer" class="hidden">
+            <h3 id="generatedKeysTitle" class="hidden">Generated Keys:</h3>
+            <div id="keysList"></div>
+            <button id="copyAllBtn" class="hidden">Copy All Keys</button>
+            <div id="copyStatus" class="hidden">Copied!</div>
+            <button id="generateMoreBtn">Generate More Keys</button>
+        </div>
+        <div class="footer">
+            <p>Disclaimer: This tool is for educational purposes only. Use responsibly.</p>
+            <button id="telegramChannelBtn">Contact Creator</button> <br><br>
+            <button id="creatorChannelBtn">Check out Our Telegram Channel</button>
         </div>
     </div>
-    <div class="card-container" id="card2" onclick="revealDiscount('card2')">
-        <div class="card">
-            <div class="card-front">
-                <img src="test card2.png" alt="Card Front">
-            </div>
-            <div class="card-back">
-                <div class="card-back-content"></div>
-            </div>
-        </div>
-    </div>
-    <div class="card-container" id="card3" onclick="revealDiscount('card3')">
-        <div class="card">
-            <div class="card-front">
-                <img src="test card3.png" alt="Card Front">
-            </div>
-            <div class="card-back">
-                <div class="card-back-content"></div>
-            </div>
-        </div>
-    </div>
-</div>
-        
-<p style="text-align:center; margin-top: 20px; font-size: 0.9em;">Each number can only join the flip card challenge twice. Please fill in your number correctly.</p>
-    <div id="prizePoolDetails" class="prize-pool-style">
-    <strong><u>Prize Pool:</u></strong>
-    <div class="discount-detail"><br></div>
-    <div class="discount-detail">1st prize: 40% Off (Min Spend $100) - 10 pieces</div>
-    <div class="discount-detail">2nd prize: 30% Off (Min Spend $100) - 40 pieces</div>
-    <div class="discount-detail">3rd prize: 25% Off (Min Spend $100) - 150 pieces</div>
-    <div class="discount-detail">4th prize: SGD15 Off (Min Spend $100) - 300 pieces</div>
-    <div class="discount-detail">5th prize: SGD10 Off (Min Spend $100) - 500 pieces</div>
-</div>
-</div>
-
-<!-- How to Redeem Voucher -->
-<div id="redeemText" style="display: none; font-size: larger; text-align: center; margin-top: 20px;">How to Redeem the voucher?</div>
-
-
-<!-- Steps to Redeem Voucher -->
-<div id="redeemSteps" style="display: none; text-align: center; margin-top: 20px;">
-    <img src="1.png" alt="Step 1" style="width: 300px; height: 300px; margin-right: 10px;">
-    <img src="2.png" alt="Step 2" style="width: 300px; height: 300px; margin-right: 10px;">
-    <img src="3.png" alt="Step 3" style="width: 300px; height: 300px; margin-right: 10px;">
-    <img src="4.png" alt="Step 4" style="width: 300px; height: 300px;">
-</div>
-
-
+    <script src="script.js"></script>
 </body>
 </html>
