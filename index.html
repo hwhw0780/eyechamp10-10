@@ -4,56 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Promo Code Generator</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header">
-        <h1>Promo Code Generator</h1>
-    </header>
-    <main class="main-content">
-        <section class="form-section">
-            <div class="form-group">
-                <label for="gameSelect">Select Game:</label>
-                <select id="gameSelect">
-                    <option value="1">Riding Extreme 3D</option>
-                    <option value="2">Chain Cube 2048</option>
-                    <option value="3">My Clone Army</option>
-                    <option value="4">Train Miner</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="keyCountSelect">Number of Keys:</label>
-                <select id="keyCountSelect">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-            <button id="startBtn" class="btn-primary">Generate Keys</button>
-        </section>
-        <section id="progressContainer" class="progress-section hidden">
+    <div class="container">
+        <h1>HW Promo Code Generator</h1>
+        <div class="button-group">
+            <button class="game-button" data-game="1">Riding Extreme 3D</button>
+            <button class="game-button" data-game="2">Chain Cube 2048</button>
+            <button class="game-button" data-game="3">My Clone Army</button>
+            <button class="game-button" data-game="4">Train Miner</button>
+        </div>
+        <div class="button-group">
+            <button class="key-button" data-keys="1">1</button>
+            <button class="key-button" data-keys="2">2</button>
+            <button class="key-button" data-keys="3">3</button>
+            <button class="key-button" data-keys="4">4</button>
+        </div>
+        <button id="startBtn" class="btn-primary">Generate Keys</button>
+        <div id="progressContainer" class="hidden">
+            <div id="progressLog">Starting... estimate 60 seconds</div>
             <div class="progress-bar">
                 <div id="progressBar"></div>
             </div>
-            <div id="progressText">0%</div>
-            <div id="progressLog">Starting...</div>
-        </section>
-        <section id="keyContainer" class="keys-section hidden">
+        </div>
+        <div id="keyContainer" class="hidden">
             <h3 id="generatedKeysTitle" class="hidden">Generated Keys:</h3>
             <div id="keysList"></div>
-            <button id="copyAllBtn" class="btn-secondary hidden">Copy All Keys</button>
+            <div class="button-group">
+                <button id="copyAllBtn" class="btn-secondary hidden">Copy All Keys</button>
+            </div>
             <div id="copyStatus" class="copy-status hidden">Copied!</div>
-            <button id="generateMoreBtn" class="btn-primary">Generate More Keys</button>
-        </section>
-    </main>
-    <footer class="footer">
-        <p>Disclaimer: This tool is for educational purposes only. Use responsibly.</p>
-        <button id="telegramChannelBtn" class="btn-link">Contact Creator</button>
-        <button id="creatorChannelBtn" class="btn-link">Check out Our Telegram Channel</button>
-    </footer>
+        </div>
+        <hr>
+        <div class="footer">
+            <p>Thanks for using HW Promo Code Service</p>
+            <img src="hwhw1111.png" alt="HW Promo Code Service" class="footer-image">
+            <button class="btn-link" onclick="window.location.href='http://www.eyechamp.com'">Contact for Advertising</button>
+            <p class="highlight-text">There are over <strong>500,000 users</strong> using this generator per day!</p>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
+
 
