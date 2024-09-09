@@ -4,15 +4,15 @@ let userPhone = '';
 let cards; // Declare cards globally but initialize later
 
 // Set the probabilities for each prize in percentages (must add up to 100)
-const prizeProbabilities = [0, 0, 0.1, 15.9, 40, 31]; // Example: 1% for first, 3% for second, etc.
+const prizeProbabilities = [0, 0, 0, 16, 60, 24]; // Example: 1% for first, 3% for second, etc.
 
 // Corresponding prizes for the images (you can map this to your images like '7.png', '8.png', etc.)
 const prizes = [
     { imgSrc: '7.png', altText: 'iPhone 15 Pro Max' },  // 1% chance
     { imgSrc: '8.png', altText: 'Mac Book Pro' }, // 3% chance
     { imgSrc: '9.png', altText: '$1010 Voucher' },          // 10% chance
-    { imgSrc: '10.png', altText: '$101,0 Voucher' },         // 15% chance
-    { imgSrc: '11.png', altText: '$10,10 Voucher' },            // 20% chance
+    { imgSrc: '10.png', altText: '$101.0 Voucher' },         // 15% chance
+    { imgSrc: '11.png', altText: '$10.10 Voucher' },            // 20% chance
     { imgSrc: '12.png', altText: 'Thanks for playing' }   // 51% chance
 ];
 
@@ -41,7 +41,7 @@ function confirmCardSelection(card, cardNumber) {
     // Get the front image source (or any identifier) for the confirmation message
     const cardImage = card.querySelector('.card-front img').src.split('/').pop(); // Get the image file name
 
-    const confirmation = confirm(`Are you sure you want to pick box ${cardNumber} (which is ${cardImage})?`);
+    const confirmation = confirm(`Are you sure you want to pick box ${cardNumber} ?`);
 
     // Only proceed to flip the card if the user confirms
     if (confirmation) {
