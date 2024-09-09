@@ -1,13 +1,21 @@
-/* General styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial ;
     text-align: center;
-    background-color: #FFCFF1; /* Light blue background color */
+    background-image: url('background.png'); /* Use your background image */
+    background-size: cover; /* Cover the entire page */
+    background-position: center center; /* Center the background image */
+    background-attachment: fixed; /* Ensure the background image stays fixed during scrolling */
+    background-repeat: no-repeat; /* Prevent the background from repeating */
     padding: 20px;
+    color: #333; /* Ensure text is readable */
 }
 
 h1, h2 {
-    color: #333;
+    color: #FFFFFF;
+    font-family: Lobster ;
+    font-size: 48px; /* Increase the font size for a bold appearance */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Add a slight shadow for depth */
+    margin-bottom: 20px;
 }
 
 #form-container {
@@ -88,8 +96,8 @@ button {
 
 /* Highlight the user's selected card */
 .card.highlight {
-    border: 5px solid #FF0000; /* Gold border to highlight selected card */
-    box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.6); /* Glowing effect */
+    border: 5px solid #FFFFFF; /* Gold border to highlight selected card */
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.6); /* Glowing effect */
     transition: border 0.3s, box-shadow 0.3s;
 }
 
@@ -113,14 +121,23 @@ button {
 }
 
 #prize-list {
-    background-color: #FF2C2C;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 10px;
+    background-color: #F7EF8A; /* Semi-transparent background */
+    border: 2px dotted #333; /* Dotted border effect */
+    padding: 20px;
+    border-radius: 15px;
     margin-bottom: 20px;
     width: 80%;
     margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a soft shadow for depth */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth hover animation */
 }
+
+/* Add hover effect to the prize list */
+#prize-list:hover {
+    background-color: #FFFFFF; /* Fully opaque on hover */
+    transform: scale(1.02); /* Slightly enlarge the container on hover */
+}
+
 
 #prize-list ul {
     list-style-type: none;
@@ -133,5 +150,19 @@ button {
 
 #prize-list strong {
     color: #333;
+}
+
+/* TNC (Terms and Conditions) Text Styling */
+#tnc {
+    position: fixed;
+    bottom: 10px; /* Distance from the bottom */
+    left: 10px;  /* Distance from the right */
+    font-size: 10px; /* Small font size */
+    color: #555; /* Gray color for the text */
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    max-width: 200px; /* Optional: limit width */
 }
 
