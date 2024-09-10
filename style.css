@@ -166,3 +166,34 @@ button {
     max-width: 200px; /* Optional: limit width */
 }
 
+#greeting {
+    display: none;
+    color: white; /* Set font color to white */
+    font-size: 18px; /* Increase font size */
+    background-color: #000080; /* Semi-transparent green background */
+    padding: 19px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+    margin: 20px auto;
+    max-width: 54%;
+    text-align: center;
+    animation: fadeIn 2.5s ease-out; /* Fade-in effect for the message */
+    transform: scale(1); /* Add scaling */
+    transition: transform 0.5s ease-in-out;
+}
+
+#greeting:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px); /* Start below and move up */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End at normal position */
+    }
+}
