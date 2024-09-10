@@ -4,16 +4,16 @@ let userPhone = '';
 let cards; // Declare cards globally but initialize later
 
 // Set the probabilities for each prize in percentages (must add up to 100)
-const prizeProbabilities = [0, 0, 0, 16, 60, 24]; // Example: 1% for first, 3% for second, etc.
+const prizeProbabilities = [0, 0, 0, 16, 60, 24];
 
 // Corresponding prizes for the images (you can map this to your images like '7.png', '8.png', etc.)
 const prizes = [
-    { imgSrc: '7.png', altText: 'iPhone 15 Pro Max' },  // 1% chance
-    { imgSrc: '8.png', altText: 'Mac Book Pro' }, // 3% chance
-    { imgSrc: '9.png', altText: '$1010 Voucher' },          // 10% chance
-    { imgSrc: '10.png', altText: '$101.0 Voucher' },         // 15% chance
-    { imgSrc: '11.png', altText: '$10.10 Voucher' },            // 20% chance
-    { imgSrc: '12.png', altText: 'Thanks for playing' }   // 51% chance
+    { imgSrc: '7.png', altText: 'iPhone 15 Pro Max' },
+    { imgSrc: '8.png', altText: 'MacBook Pro' },
+    { imgSrc: '9.png', altText: '$1010 Voucher' },
+    { imgSrc: '10.png', altText: '$101.0 Voucher' },
+    { imgSrc: '11.png', altText: '$10.10 Voucher' },
+    { imgSrc: '12.png', altText: 'Thanks for playing' }
 ];
 
 function startGame() {
@@ -38,10 +38,7 @@ function startGame() {
 
 // Confirmation dialog before flipping a card
 function confirmCardSelection(card, cardNumber) {
-    // Get the front image source (or any identifier) for the confirmation message
-    const cardImage = card.querySelector('.card-front img').src.split('/').pop(); // Get the image file name
-
-    const confirmation = confirm(`Are you sure you want to pick box ${cardNumber} ?`);
+    const confirmation = confirm(`Are you sure you want to pick box ${cardNumber}?`);
 
     // Only proceed to flip the card if the user confirms
     if (confirmation) {
@@ -74,22 +71,20 @@ function flipCard(card) {
     }, 3000);
 }
 
-// Weighted random selection of a prize
 function choosePrizeWithProbability() {
     let cumulativeProbability = 0;
-    const randomNum = Math.random() * 100; // Generate a random number between 0 and 100
+    const randomNum = Math.random() * 100;
 
     for (let i = 0; i < prizeProbabilities.length; i++) {
         cumulativeProbability += prizeProbabilities[i];
         if (randomNum <= cumulativeProbability) {
-            return prizes[i]; // Return the selected prize
+            return prizes[i];
         }
     }
 }
 
 function flipAllCards() {
     cards.forEach(card => {
-        // Flip cards if they aren't already flipped
         if (!card.classList.contains('flipped')) {
             card.classList.add('flipped');
         }
@@ -99,5 +94,5 @@ function flipAllCards() {
 function showGreeting(name, phone, prize) {
     const greetingMessage = `Congratulations, ${name} (${phone})! You have won: ${prize}`;
     document.getElementById('greetingMessage').textContent = greetingMessage;
-    document.getElementById('greeting').style.display = 'block'; // Show the greeting
+    document.getElementById('greeting').style.display = 'block';
 }
