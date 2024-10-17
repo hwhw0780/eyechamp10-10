@@ -4,16 +4,16 @@ let userPhone = '';
 let cards; // Declare cards globally but initialize later
 
 // Set the probabilities for each prize in percentages (must add up to 100)
-const prizeProbabilities = [0, 0, 0, 16, 60, 24];
+const prizeProbabilities = [0, 1, 3, 16, 30, 50];
 
 // Corresponding prizes for the images (you can map this to your images like '7.png', '8.png', etc.)
 const prizes = [
     { imgSrc: '7.png', altText: 'iPhone 15 Pro Max' },
-    { imgSrc: '8.png', altText: 'MacBook Pro' },
-    { imgSrc: '9.png', altText: '$1010 Voucher' },
-    { imgSrc: '10.png', altText: '$101.0 Voucher' },
-    { imgSrc: '11.png', altText: '$10.10 Voucher' },
-    { imgSrc: '12.png', altText: 'Thanks for playing' }
+    { imgSrc: '8.png', altText: 'Apple Ipad' },
+    { imgSrc: '9.png', altText: '$100 Voucher' },
+    { imgSrc: '10.png', altText: '$50 Voucher' },
+    { imgSrc: '11.png', altText: 'Mystery Gift T1' },
+    { imgSrc: '12.png', altText: 'Mystery Gift T2' }
 ];
 
 function startGame() {
